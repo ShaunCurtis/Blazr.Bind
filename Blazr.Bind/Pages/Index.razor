@@ -1,0 +1,74 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<InputCheckbox class="form-check"
+               @bind-Value=this.model.Value />
+
+<InputCheckbox class="form-check"
+               Value=this.model.Value
+               ValueChanged=this.OnValueChanged
+               ValueExpression="() => this.model.Value" />
+
+<InputText class="form-control"
+           @bind-Value=this.model.Name 
+           @bind-Value:after=this.NameChanged
+           />
+
+<InputText class="form-control"
+           @bind-Value:get=this.model.Name
+           @bind-Value:set="(value) => this.model.Name = value" 
+           />
+
+<InputText class="form-control"
+           @bind-Value:get=this.model.Name
+           @bind-Value:set=this.OnNameChanged
+           @bind-Value:after=this.NameChanged
+           />
+
+<div class="alert alert-info">
+    Value: @this.model.Value
+</div>
+
+<div class="alert alert-info">
+    Name: @this.model.Name
+</div>
+
+<div class="alert alert-info">
+    @this.message
+</div>
+
+@code {
+    private Model model = new();
+    private string message = "No Message";
+
+    private Task OnValueChanged(bool value)
+    {
+        this.model.Value = value;
+        // You can do other stuff here if you need to
+        this.message = $"Set at {DateTime.Now.ToLongTimeString()}";
+        return Task.CompletedTask;
+    }
+
+    private Task OnNameChanged(string? value)
+    {
+        this.model.Name = value;
+        // You can do other stuff here if you need to
+        this.message = $"Set at {DateTime.Now.ToLongTimeString()}";
+        return Task.CompletedTask;
+    }
+
+    private void NameChanged()
+    {
+        // You can do other stuff here if you need to
+        this.message = $"Set at {DateTime.Now.ToLongTimeString()}";
+    }
+
+    public class Model
+    {
+        public bool Value { get; set; }
+        public string? Name { get; set; }
+    }
+}
