@@ -1,5 +1,5 @@
 
-.Net7.0 introduced another way to do component binding in Blazor.  While, it was done with good intentions, It's probably mor confusing than ever to the people who it is aimed at.
+.Net7.0 introduced another way to do component binding in Blazor.  While, it was done with good intentions, It's probably more confusing than ever to the people who it is aimed at.
 
 Binding is the way Blazor establishes a two way communication channel with an edit component.  Normally that will be `input` or similar html element, but could be a more exotic edit mechanism - we'll look at one later.
 

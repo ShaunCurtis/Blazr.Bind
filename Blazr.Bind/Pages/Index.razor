@@ -12,20 +12,19 @@
                ValueChanged=this.OnValueChanged
                ValueExpression="() => this.model.Value" />
 
-<InputText class="form-control"
+<InputText class="form-control mb-3"
            @bind-Value=this.model.Name 
            @bind-Value:after=this.NameChanged
            />
 
-<InputText class="form-control"
+<InputText class="form-control mb-3"
            @bind-Value:get=this.model.Name
            @bind-Value:set="(value) => this.model.Name = value" 
            />
 
-<InputText class="form-control"
+<InputText class="form-control mb-3"
            @bind-Value:get=this.model.Name
            @bind-Value:set=this.OnNameChanged
-           @bind-Value:after=this.NameChanged
            />
 
 <div class="alert alert-info">
